@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationDTO {
+struct LocationDTO : Decodable {
     let name: String
     let lat: Double
     let lon: Double
@@ -15,7 +15,8 @@ struct LocationDTO {
     func convertToDomain() -> Location {
         return Location(name: name, latitude: lat, logitude: lon)
     }
-    
-    
-    
+}
+
+struct LocationResponse : Decodable {
+    let locations: [LocationDTO]
 }
