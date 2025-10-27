@@ -22,7 +22,7 @@ class WIkiPediaAppDeepLink : DeepLinkService {
         // Querry Params for wikkipedia application
         components.queryItems = [
             URLQueryItem(name: WikiPediaApp.QuerryParam.lattitude, value: String(location.latitude)),
-            URLQueryItem(name: WikiPediaApp.QuerryParam.longitude, value: String(location.logitude))
+            URLQueryItem(name: WikiPediaApp.QuerryParam.longitude, value: String(location.longitude))
         ]
         return components.url
     }

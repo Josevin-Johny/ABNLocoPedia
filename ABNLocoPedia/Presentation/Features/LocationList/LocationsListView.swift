@@ -192,9 +192,9 @@ struct LocationsListView : View {
 final class MockFetchLocationsUseCase: FetchLocationsUseCaseProtocol {
     func execute() -> AnyPublisher<[Location], Error> {
         let locations = [
-            Location(name: "Amsterdam", latitude: 52.3676, logitude: 4.9041),
-            Location(name: "Rotterdam", latitude: 51.9225, logitude: 4.4791),
-            Location(name: "Utrecht", latitude:  52.0907, logitude: 5.1214)
+            Location(name: "Amsterdam", latitude: 52.3676, longitude: 4.9041),
+            Location(name: "Rotterdam", latitude: 51.9225, longitude: 4.4791),
+            Location(name: "Utrecht", latitude:  52.0907, longitude: 5.1214)
         ]
         
         return Just(locations)

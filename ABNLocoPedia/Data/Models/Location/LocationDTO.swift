@@ -13,7 +13,7 @@ struct LocationDTO : Decodable {
     let long: Double
     
     func convertToDomain() -> Location {
-        return Location(name: name ?? "Unknown Place", latitude: lat, logitude: long)
+        return Location(name: name ?? "Unknown Place", latitude: lat, longitude: long)
     }
 }
 

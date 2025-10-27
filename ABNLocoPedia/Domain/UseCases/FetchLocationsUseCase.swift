@@ -23,7 +23,7 @@ class FetchLocationsUseCase: FetchLocationsUseCaseProtocol {
         repository.fetchLocations()
             .map { locations in
                 print("Debug: Fetched \(locations.count) locations from API")
-                locations.forEach { print("  - \($0.name): \($0.latitude), \($0.logitude)") }
+                locations.forEach { print("  - \($0.name): \($0.latitude), \($0.longitude)") }
                 // Business rule: Filter out invalid locations
                 let validLocations = locations.filter { $0.isValid }
                 print("Debug: \(validLocations.count) valid locations after filtering")

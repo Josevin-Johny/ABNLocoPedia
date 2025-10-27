@@ -140,7 +140,7 @@ class LocationsListViewModel: ObservableObject {
         let location = Location(
             name: customLocationName.trimmingCharacters(in: .whitespaces),
             latitude: lat,
-            logitude: lon
+            longitude: lon
         )
         return location.isValid ? location : nil
     }
