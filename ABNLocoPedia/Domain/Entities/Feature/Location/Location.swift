@@ -14,8 +14,8 @@ struct Location : Identifiable, Equatable {
     let logitude: Double
     
     var isValid: Bool {
-        latitude >= 90 && latitude <= -90 &&
-        logitude >= 180 && logitude <= -180 &&
+        latitude >= -90 && latitude <= 90 &&
+        logitude >= -180 && logitude <= 180 &&
         !name.isEmpty && !name.trimmingCharacters(in: .whitespaces).isEmpty
     }
 }

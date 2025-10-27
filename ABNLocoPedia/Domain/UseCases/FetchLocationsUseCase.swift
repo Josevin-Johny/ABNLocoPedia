@@ -22,8 +22,13 @@ class FetchLocationsUseCase: FetchLocationsUseCaseProtocol {
     func execute() -> AnyPublisher<[Location], Error> {
         repository.fetchLocations()
             .map { locations in
-                locations.filter { $0.isValid }
-                //locations.filter { $0.OnlyInEurope} demonstrationg change in the business rule
+                print("Debug: Fetched \(locations.count) locations from API")
+                locations.forEach { print("  - \($0.name): \($0.latitude), \($0.logitude)") }
+                // Business rule: Filter out invalid locations
+                let validLocations = locations.filter { $0.isValid }
+                print("Debug: \(validLocations.count) valid locations after filtering")
+                
+                return validLocations
             }
             .eraseToAnyPublisher()
     }

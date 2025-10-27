@@ -8,12 +8,12 @@
 import Foundation
 
 struct LocationDTO : Decodable {
-    let name: String
+    let name: String?
     let lat: Double
-    let lon: Double
+    let long: Double
     
     func convertToDomain() -> Location {
-        return Location(name: name, latitude: lat, logitude: lon)
+        return Location(name: name ?? "Unknown Place", latitude: lat, logitude: long)
     }
 }
 

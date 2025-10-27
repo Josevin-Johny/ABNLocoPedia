@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct ABNLocoPediaApp: App {
+    private let diContainer = DIContainer.shared
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            diContainer.makeLocationsListView()
         }
     }
 }
