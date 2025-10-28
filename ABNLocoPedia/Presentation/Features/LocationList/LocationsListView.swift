@@ -50,12 +50,15 @@ struct LocationsListView : View {
                 placement: .navigationBarDrawer(displayMode: .always),
                 prompt: "Search Locations"
             )
+            .accessibilityHint("Use search to filter locations by name")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         showingCustomLocationSheet = true
                     } label: {
                         Image(systemName: "plus.circle.fill")
+                            .accessibilityLabel("Add custom location")
+                            .accessibilityHint("Opens form to enter custom coordinates")
                     }
                 }
             }
@@ -98,6 +101,9 @@ struct LocationsListView : View {
             Text ("Tap to load locations")
                 .foregroundColor(.secondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Ready to explore")
+        .accessibilityHint("Locations will load automatically")
     }
     
     /// Shown while fetching locations from API
@@ -109,6 +115,9 @@ struct LocationsListView : View {
             Text ("Loading loacations...")
                 .foregroundColor(.secondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Loading locations")
+        .accessibilityValue("Please wait")
     }
         
     /// Displays list of locations with search filtering
@@ -120,9 +129,14 @@ struct LocationsListView : View {
                     .onTapGesture {
                         viewModel.openLocation(selected: location)
                     }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel(accessibilityLabel(location))
+                    .accessibilityHint("Double tap to open in Wikipedia app")
+                    .accessibilityAddTraits(.isButton)
             }
         }
         .listStyle(.plain)
+        .accessibilityLabel("Locations list")
         .overlay {
             if viewModel.filterdLocations.isEmpty {
                 emptySearchView
@@ -144,6 +158,8 @@ struct LocationsListView : View {
             Text("Try a different search term")
                 .foregroundColor(.secondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("No results found for \(viewModel.searchText)")
     }
     
     /// Displays error message with retry button
@@ -166,7 +182,12 @@ struct LocationsListView : View {
                 viewModel.loadLocations()
             }
             .buttonStyle(.bordered)
+            .accessibilityLabel("Retry loading locations")
+            .accessibilityHint("Double tap to try loading again")
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Error loading locations. \(message)")
+        .accessibilityHint("Use retry button to try again")
     }
     
 }
