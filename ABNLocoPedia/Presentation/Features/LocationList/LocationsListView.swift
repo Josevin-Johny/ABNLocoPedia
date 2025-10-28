@@ -130,7 +130,6 @@ struct LocationsListView : View {
                         viewModel.openLocation(selected: location)
                     }
                     .accessibilityElement(children: .combine)
-                    .accessibilityLabel(accessibilityLabel(location))
                     .accessibilityHint("Double tap to open in Wikipedia app")
                     .accessibilityAddTraits(.isButton)
             }
